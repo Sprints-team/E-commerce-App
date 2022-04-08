@@ -1,0 +1,11 @@
+@use "../../styles/global/mixins.module.scss";
+
+.container {
+  @include mixins.resetList;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
