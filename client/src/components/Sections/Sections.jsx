@@ -11,7 +11,7 @@ import classes from "../../styles/Sections/Sections.module.scss";
 const Sections = () => {
   const { scrollIntoView: scrollIntoCollection, targetRef: collectionRef } =
     useScrollIntoView({
-      offset: 1,
+      offset: 60,
     });
   const { scrollIntoView: scrollIntoNewArravail, targetRef: newArravailRef } =
     useScrollIntoView({
