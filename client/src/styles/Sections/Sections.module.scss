@@ -17,7 +17,7 @@
 
     button {
       @include mixins.button;
-      width: 4rem;
+      width: 10em;
       text-transform: uppercase;
       transition: all 0.3s ease;
       &:hover {
