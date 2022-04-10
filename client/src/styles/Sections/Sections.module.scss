@@ -10,9 +10,14 @@
     padding: 0.75em 0;
     @include mixins.shadow-divider();
     margin-bottom: 1vw;
+    gap: 1em;
+    @media screen and (max-width: 425px) {
+      flex-direction: column;
+    }
 
     button {
       @include mixins.button;
+      width: 4rem;
       text-transform: uppercase;
       transition: all 0.3s ease;
       &:hover {
