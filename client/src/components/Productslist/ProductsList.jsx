@@ -6,7 +6,7 @@ const ProductsList = ({ products }) => {
     <Container size='lg'>
       <ul className={classes.container}>
         {products.map((product) => (
-          <Product product={product} key={product.id} />
+          <Product product={product} key={product._id} />
         ))}
       </ul>
     </Container>

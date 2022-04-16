@@ -27,12 +27,13 @@ function App() {
         </Container>
       </Header>
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route
-          path='/products'
-          element={<ProductsList products={products} />}
-        />
-        <Route path='/products/:productId' element={<ProductPage />} />
+        <Route path='/'>
+          <Route index element={<Home />} />
+          <Route path='products'>
+            <Route index element={<ProductsList products={products} />} />
+            <Route path=':productId' element={<ProductPage />} />
+          </Route>
+        </Route>
       </Routes>
     </MantineProvider>
   );

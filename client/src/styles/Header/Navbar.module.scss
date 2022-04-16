@@ -19,23 +19,15 @@
   }
 
   //! Logo
-  .logo {
+  .logo a {
     font-size: 1.75rem;
     padding-bottom: 0.2em;
-    &:hover {
-      color: variables.$primaryColor;
-    }
   }
 
   //! Nav links
   .nav {
     ul {
       gap: 3rem;
-    }
-    ul li {
-      &:hover {
-        color: variables.$primaryColor;
-      }
     }
     display: none;
     @media screen and (min-width: 768px) {
@@ -79,8 +71,5 @@
     font-size: 1.3rem;
     cursor: pointer;
     transition: all ease 0.3s;
-    &:hover {
-      color: variables.$primaryColor;
-    }
   }
 }
