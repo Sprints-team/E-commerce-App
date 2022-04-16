@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  @media screen and (max-width: 426px) {
+    justify-content: space-around;
+  }
+}
+.colorSwatch {
+  margin-right: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    box-shadow: 0px 0px 5px 1px #00000091;
+    transform: scale(1.28);
+  }
+}

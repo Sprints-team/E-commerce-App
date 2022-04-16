@@ -1,0 +1,56 @@
+@use "../global/variables.module.scss";
+// @use "../global/mixins.module.scss";
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+}
+
+.bigSwiperContainer {
+  flex: 4;
+  background-color: #fff;
+  @include flexCenter;
+  overflow: hidden;
+  margin-bottom: 10px;
+  .bigSwiper {
+    .swiper-slide {
+      @include flexCenter;
+      align-items: center;
+      cursor: pointer;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+}
+
+.smallSwiperContainer {
+  flex: 1;
+  @include flexCenter;
+  overflow: hidden;
+  .smallSwiper {
+    .swiper-slide {
+      @include flexCenter;
+      align-items: center;
+      cursor: pointer;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(0.5);
+        transition: filter 0.2s ease-in-out;
+      }
+      &:hover,
+      &:active {
+        img {
+          filter: brightness(1);
+        }
+      }
+    }
+  }
+}
+
+// .active-thum {
+//   opacity: 1;
+// }

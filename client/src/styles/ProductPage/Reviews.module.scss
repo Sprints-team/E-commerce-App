@@ -1,0 +1,26 @@
+@use "../global/mixins.module.scss";
+.container {
+  @include mixins.resetList;
+  .review {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    @include mixins.shadow-divider;
+  }
+  .avatar {
+    display: flex;
+    justify-self: flex-start;
+    align-items: center;
+    h4 {
+      margin-left: 5px;
+      font-weight: 500;
+      line-height: 1;
+      text-transform: capitalize;
+    }
+  }
+  .rating {
+    margin-left: 5px;
+  }
+  p {
+    margin-left: 10px;
+  }
+}
