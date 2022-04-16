@@ -4,7 +4,7 @@ import classes from "../../styles/ProductsList/Product.module.scss";
 const Product = ({ product }) => {
   return (
     <li className={classes.container}>
-      <Link to={`/products/1${product._id}`}>
+      <Link to={`/products/${product._id}`}>
         <div className={classes.image}>
           <img src={product.imageUrl} alt={product.title} />
         </div>

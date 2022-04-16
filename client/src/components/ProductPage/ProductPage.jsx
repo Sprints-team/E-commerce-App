@@ -2,9 +2,10 @@ import { Container } from "@mantine/core";
 import { Rating } from "react-simple-star-rating";
 import classes from "../../styles/ProductPage/ProductPage.module.scss";
 import ProductImageSlider from "./ProductImageSlider";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ColorSwitch from "./ColorSwitch";
 import Reviews from "./Reviews";
+import { useLocation } from "react-router-dom";
 
 //! DUMMY_DATA
 const imageRef = [
@@ -61,6 +62,11 @@ const reviews = [
 
 const ProductPage = () => {
   const [size, setSize] = useState("");
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   console.log(size);
   return (
     <Container size='xl'>
