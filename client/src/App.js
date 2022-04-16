@@ -5,6 +5,7 @@ import Navbar from "./components/Header/Navbar";
 import ProductPage from "./components/ProductPage/ProductPage";
 import ProductsList from "./components/Productslist/ProductsList";
 import products from "./data.json";
+import Cart from "./Pages/Cart";
 import Home from "./Pages/Home";
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
             <Route index element={<ProductsList products={products} />} />
             <Route path=':productId' element={<ProductPage />} />
           </Route>
+          <Route path='cart' element={<Cart />} />
         </Route>
       </Routes>
     </MantineProvider>
