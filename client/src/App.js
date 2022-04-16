@@ -1,8 +1,12 @@
-import { MantineProvider, Container } from "@mantine/core";
-import Cover from "./components/Header/Cover";
+import { Container, MantineProvider } from "@mantine/core";
+import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Navbar from "./components/Header/Navbar";
-import Sections from "./components/Sections/Sections";
+import ProductPage from "./components/ProductPage/ProductPage";
+import ProductsList from "./components/Productslist/ProductsList";
+import products from "./data.json";
+import Home from "./Pages/Home";
+
 function App() {
   return (
     <MantineProvider
@@ -16,19 +20,20 @@ function App() {
             xl: 1536,
           },
         },
-      }}
-    >
+      }}>
       <Header>
-        <Container size="lg">
+        <Container size='xl'>
           <Navbar />
         </Container>
-        <Container size="xl">
-          <Cover />
-        </Container>
       </Header>
-      <Container size="lg">
-        <Sections />
-      </Container>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route
+          path='/products'
+          element={<ProductsList products={products} />}
+        />
+        <Route path='/products/:productId' element={<ProductPage />} />
+      </Routes>
     </MantineProvider>
   );
 }
