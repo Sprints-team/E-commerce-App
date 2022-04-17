@@ -9,13 +9,13 @@ const Cover = () => {
           <h3>Limted Time Only For Winter</h3>
           <h1>Fashion</h1>
           <h3>Look Your Best On Your Best Day</h3>
-          <Button color="red" radius="md" size="xs">
+          <Button color='red' radius='md' size='xs'>
             Discover More
           </Button>
         </div>
       </div>
       <div className={classes.image}>
-        <img src="./images/Model.png" alt="" />
+        <img src='./images/Model.png' alt='' />
       </div>
     </div>
   );

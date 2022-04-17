@@ -1,12 +1,15 @@
+import { Container } from "@mantine/core";
 import classes from "../../styles/ProductsList/ProductsList.module.scss";
-import Product from "./Product";
+import Product from "./ProductCard";
 const ProductsList = ({ products }) => {
   return (
-    <ul className={classes.container}>
-      {products.map((product) => (
-        <Product product={product} key={product.id} />
-      ))}
-    </ul>
+    <Container size='lg'>
+      <ul className={classes.container}>
+        {products.map((product) => (
+          <Product product={product} key={product.id} />
+        ))}
+      </ul>
+    </Container>
   );
 };
 

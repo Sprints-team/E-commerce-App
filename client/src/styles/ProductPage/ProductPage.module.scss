@@ -1,0 +1,72 @@
+@use "../global/mixins.module.scss";
+@use "../global/variables.module.scss";
+.ProductContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: nowrap;
+  height: calc(100vh - 70px);
+  margin: 0 0 70px 0;
+  gap: 50px;
+  @include mixins.shadow-divider;
+  @media screen and (max-width: 769px) {
+    flex-direction: column;
+    height: calc(2 * 100vh - 70px);
+  }
+
+  .image {
+    flex: 1;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding-bottom: 10px;
+    @media screen and (max-width: 769px) {
+      height: 100vh;
+    }
+  }
+  .details {
+    flex: 1;
+    .rating {
+      margin-left: -2px;
+    }
+    .price {
+      color: #024e82;
+    }
+    p {
+      max-width: 500px;
+    }
+    h5 {
+      span {
+        font-weight: lighter;
+        text-transform: capitalize;
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    select {
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.5em 0.5em;
+      border-radius: 0.5em;
+      option {
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+    }
+    .button {
+      @include mixins.btnColored;
+      @media screen and (max-width: 426px) {
+        width: 100%;
+      }
+    }
+    @media screen and (max-width: 426px) {
+      h1 {
+        font-size: 1.7rem;
+      }
+    }
+  }
+}

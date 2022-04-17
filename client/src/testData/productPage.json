@@ -1,0 +1,55 @@
+{
+  "tite": "product",
+  "gender": "MALE",
+  "ageGroup": "ADULT",
+  "stock": [
+    {
+      "color": "#ffffff",
+      "sizes": [
+        { "size": "M", "qty": 2 },
+        { "size": "M", "qty": 2 },
+        { "size": "M", "qty": 2 }
+      ]
+    },
+    {
+      "color": "#ffffff",
+      "sizes": [
+        { "size": "M", "qty": 2 },
+        { "size": "M", "qty": 2 },
+        { "size": "M", "qty": 2 }
+      ]
+    }
+  ],
+  "price": 33,
+  "describtion": "a very good product",
+  "discount": 0,
+  "reviews": [
+    {
+      "content": "nice product",
+      "rating": 3,
+      "name": {
+        "first": "ahmed",
+        "last": "mamduh"
+      }
+    },
+    {
+      "content": "nice product",
+      "rating": 3,
+      "name": {
+        "first": "ahmed",
+        "last": "mamduh"
+      }
+    }
+  ],
+  "rating": 3.5,
+  "image": ["url", "url"],
+  "category": {
+    "title": "swatshirt",
+    "_id": ""
+  },
+  "brand": {
+    "title": "adidas",
+    "logo": "url",
+    "_id": ""
+  }
+}

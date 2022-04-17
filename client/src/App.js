@@ -1,26 +1,51 @@
-
+import { Container, MantineProvider } from "@mantine/core";
+import { Route, Routes } from "react-router-dom";
+import Header from "./components/Header/Header";
+import Navbar from "./components/Header/Navbar";
+import ProductPage from "./components/ProductPage/ProductPage";
+import ProductsList from "./components/Productslist/ProductsList";
 import New from './pages/adminpages/new/New.jsx';
 import Single from './pages/adminpages/single/Single.jsx';
 import { userInputs ,productInputs} from './formSource';
 import List from './pages/adminpages/list/List.jsx';
-import HomePage from './pages/home/HomePage.jsx';
+
 import { userColumns , productRows,productColumns,userRows,orderRows,orderColumns ,users} from './datatablesource';
-import{ BrowserRouter, Routes,Route,} from "react-router-dom"
+
 import Edit from './pages/adminpages/edit/Edit.jsx';
 import Underprogress from './pages/adminpages/underprogress/Underprogress.jsx'
 import Adminhome from './pages/adminpages/adminhome/Adminhome.jsx';
 import Adminlogin from './pages/adminpages/login/Adminlogin';
+import products from "./data.json";
+
+import Home from "./Pages/Home";
 
 function App() {
   return (
-    <BrowserRouter>
-    <Routes>
-    
-
-  
-
-    <Route path='/' element={<HomePage />} />
-    <Route path='admin'>
+    <MantineProvider
+      defaultProps={{
+        Container: {
+          sizes: {
+            xs: 0,
+            sm: 600,
+            md: 900,
+            lg: 1200,
+            xl: 1536,
+          },
+        },
+      }}>
+      <Header>
+        <Container size='xl'>
+          <Navbar />
+        </Container>
+      </Header>
+      <Routes>
+        <Route path='/'>
+          <Route index element={<Home />} />
+          <Route path='products'>
+            <Route index element={<ProductsList products={products} />} />
+            <Route path=':productId' element={<ProductPage />} />
+          </Route>
+          <Route path='admin'>
 					<Route index element={<Adminhome />} />
 					<Route path='login' element={<Adminlogin />} />
         <Route index element={<Adminhome/>}/>
@@ -53,10 +78,10 @@ function App() {
         <Route path='edit' element={<Edit/>}/>
         
       </Route>
-      </Route>
-     
-    </Routes>
-  </BrowserRouter>
+        </Route>
+        </Route>
+      </Routes>
+    </MantineProvider>
   );
 }
 

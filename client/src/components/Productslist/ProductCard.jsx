@@ -1,8 +1,6 @@
-import { useState } from "react";
-import Rating from "@mui/material/Rating";
+import { Rating } from "react-simple-star-rating";
 import classes from "../../styles/ProductsList/Product.module.scss";
 const Product = ({ product }) => {
-  const [value, setValue] = useState(2);
   return (
     <li className={classes.container}>
       <div className={classes.image}>
@@ -14,12 +12,13 @@ const Product = ({ product }) => {
           <div className={classes.price}>${product.price}</div>
           <div>
             <Rating
-              readOnly
-              name="simple-controlled"
-              value={value}
-              onChange={(event, newValue) => {
-                setValue(newValue);
-              }}
+              initialValue={4.5}
+              size={25}
+              fillColor='red'
+              allowHover
+              transition
+              allowHalfIcon
+              readonly
             />
           </div>
         </div>
