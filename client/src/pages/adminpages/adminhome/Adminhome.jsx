@@ -1,12 +1,12 @@
 import React from 'react'
 import "./Adminhome.scss"
-import Sidebar from './../../../components/adminComponents/sidebar/Sidebar';
-import Widget from './../../../components/adminComponents/widget/Widget'
-import Navbar from './../../../components/adminComponents/navbar/Navbar';
+import Sidebar from '../../../components/adminComponents/sidebar/Sidebar';
+import Widget from '../../../components/adminComponents/widget/Widget'
+import Navbar from '../../../components/adminComponents/navbar/Navbar';
 import Featured from '../../../components/adminComponents/featured/Featured';
 import Chart from '../../../components/adminComponents/chart/Chart';
 
-import TableList from './../../../components/adminComponents/table/TableList';
+import TableList from '../../../components/adminComponents/table/TableList';
 const Adminhome = () => {
   return (
     <div className='home'>

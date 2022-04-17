@@ -1,8 +1,8 @@
 import React from 'react'
 import './Single.scss'
-import Chart from './../../../components/adminComponents/chart/Chart'
-import Sidebar from './../../../components/adminComponents/sidebar/Sidebar';
-import Navbar from './../../../components/adminComponents/navbar/Navbar';
+import Chart from '../../../components/adminComponents/chart/Chart'
+import Sidebar from '../../../components/adminComponents/sidebar/Sidebar';
+import Navbar from '../../../components/adminComponents/navbar/Navbar';
 import TableList from '../../../components/adminComponents/table/TableList';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';

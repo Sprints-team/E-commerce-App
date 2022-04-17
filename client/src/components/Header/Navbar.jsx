@@ -3,6 +3,7 @@ import { User } from "tabler-icons-react";
 import { Bell } from "tabler-icons-react";
 import { ThemeIcon, Burger, Drawer } from "@mantine/core";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import classes from "../../styles/Header/Navbar.module.scss";
 
@@ -11,7 +12,9 @@ const Navbar = () => {
   const title = opened ? "Close navigation" : "Open navigation";
   return (
     <ul className={classes.container}>
-      <li className={classes.logo}>Sprints</li>
+      <li className={classes.logo}>
+        <Link to='/'>Sprints</Link>
+      </li>
       <Drawer
         styles={{
           title: { fontSize: "2rem" },
@@ -19,15 +22,16 @@ const Navbar = () => {
         }}
         opened={opened}
         onClose={() => setOpened(false)}
-        title="ALL"
-        padding="xl"
-        size="xl"
+        title='ALL'
+        padding='xl'
+        size='xl'
         transitionDuration={300}
-        transitionTimingFunction="ease"
-        transition="slide-right"
-      >
+        transitionTimingFunction='ease'
+        transition='slide-right'>
         <ul className={classes.drawerLinks}>
-          <li>Home</li>
+          <li>
+            <Link to='/'>Home</Link>
+          </li>
           <li>Shop</li>
           <li>Pages</li>
           <li>Contact</li>
@@ -36,7 +40,9 @@ const Navbar = () => {
       </Drawer>
       <li className={classes.nav}>
         <ul>
-          <li>Home</li>
+          <li>
+            <Link to='/'>Home</Link>
+          </li>
           <li>Shop</li>
           <li>Pages</li>
           <li>Contact</li>

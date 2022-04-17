@@ -4,8 +4,8 @@ import { Rating } from "react-simple-star-rating";
 const Reviews = ({ reviews }) => {
   return (
     <ul className={classes.container}>
-      {reviews.map((review) => (
-        <li className={classes.review}>
+      {reviews.map((review, index) => (
+        <li className={classes.review} key={index}>
           <div className={classes.avatar}>
             <Avatar radius='xl' color={"red"} />
             <h4>{`${review?.name.first} ${review?.name.last}`}</h4>

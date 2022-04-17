@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import './New.scss'
 import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
-import Navbar from './../../../components/adminComponents/navbar/Navbar';
-import Sidebar from './../../../components/adminComponents/sidebar/Sidebar';
+import Navbar from '../../../components/adminComponents/navbar/Navbar';
+import Sidebar from '../../../components/adminComponents/sidebar/Sidebar';
 const New = ({inputs,title}) => {
   const[file,setFile] = useState("")
   return (

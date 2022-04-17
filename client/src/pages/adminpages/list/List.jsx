@@ -1,8 +1,8 @@
 import React from 'react'
 import './List.scss'
 
-import Sidebar from './../../../components/adminComponents/sidebar/Sidebar';
-import Navbar from './../../../components/adminComponents/navbar/Navbar';
+import Sidebar from '../../../components/adminComponents/sidebar/Sidebar';
+import Navbar from '../../../components/adminComponents/navbar/Navbar';
 import Datatable from '../../../components/adminComponents/datatable/Datatable';
 const List = ({rows,columns,btn,title,type}) => {
   return (

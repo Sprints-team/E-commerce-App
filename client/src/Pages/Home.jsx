@@ -1,6 +1,6 @@
 import { Container } from "@mantine/core";
-import Cover from "./../components/Header/Cover";
-import Sections from "./../components/Sections/Sections";
+import Cover from "../components/Header/Cover";
+import Sections from "../components/Sections/Sections";
 
 const Home = () => {
   return (

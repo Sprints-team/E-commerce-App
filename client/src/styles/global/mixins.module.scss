@@ -37,3 +37,11 @@ $primaryColor: variables.$primaryColor;
   justify-content: center;
   // align-items: center;
 }
+@mixin small-container {
+  border-radius: 5px;
+  padding: 0.55em 0.75em;
+  border: 2px solid variables.$primaryColor;
+  background-color: variables.$primaryColor;
+  font-weight: 600;
+  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+}

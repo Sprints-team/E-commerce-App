@@ -1,0 +1,93 @@
+@use "../global/variables.module.scss";
+@use "../global/mixins.module.scss";
+
+$primaryColor: variables.$primaryColor;
+
+.container {
+  display: flex;
+  padding: 60px 0;
+  gap: 28px;
+  min-height: calc(100vh - 100px);
+
+  .table {
+    flex: 3;
+    border-collapse: collapse;
+    font-size: 0.9em;
+    min-width: 70%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    overflow: auto;
+
+    table {
+      width: 100%;
+    }
+
+    thead tr {
+      background-color: $primaryColor;
+      color: #ffffff;
+      text-align: left;
+    }
+    th,
+    td {
+      text-align: center;
+      border-radius: 5px;
+      padding: 12px 15px;
+    }
+    tbody tr {
+      border-radius: 5px;
+      border-bottom: 1px solid #dddddd;
+    }
+
+    tbody tr:nth-of-type(even) {
+      background-color: #f3f3f3;
+    }
+  }
+
+  .cartTotal {
+    flex: 1;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    background-color: transparentize($color: $primaryColor, $amount: 0.5);
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    h1 {
+      padding-bottom: 10px;
+    }
+    hr {
+      border-bottom: 2px solid #f3f3f3;
+    }
+    div {
+      text-align: left;
+      font-size: 1.15rem;
+      font-weight: bold;
+      margin-bottom: 2em;
+      @include mixins.small-container;
+      P {
+        margin: 0.25em;
+      }
+      span {
+        &:first-of-type {
+          display: inline-block;
+          min-width: 5em;
+        }
+        &:last-of-type {
+          margin-left: 1em;
+        }
+      }
+    }
+    button {
+      @include mixins.button;
+    }
+  }
+}
+
+@media screen and (max-width: 769px) {
+  .container {
+    flex-direction: column;
+    .cartTotal {
+      div {
+        font-size: 0.85rem;
+      }
+    }
+  }
+}
