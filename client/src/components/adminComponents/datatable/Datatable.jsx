@@ -32,10 +32,10 @@ const Datatable = ({rows,columns,btn,title,type}) => {
   return (
     <div className='dataTable'>
       <div className="datatableTitle">
-        
-      <Link to={`/admin/${type}/new`} className='link'>
+        {(type !== "users" && type !=="orders")&&  (<Link to={`/admin/${type}/new`} className='link'>
           {btn}
-        </Link>
+        </Link>)}
+     
         
 
 

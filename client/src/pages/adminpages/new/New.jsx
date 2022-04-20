@@ -3,8 +3,126 @@ import './New.scss'
 import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
 import Navbar from '../../../components/adminComponents/navbar/Navbar';
 import Sidebar from '../../../components/adminComponents/sidebar/Sidebar';
-const New = ({inputs,title}) => {
+import axios from '../../../hooks/axios';
+import { useNavigate } from "react-router-dom";
+const New = ({title,type}) => {
+  
+
+  let navigate = useNavigate();
   const[file,setFile] = useState("")
+  const[color,setColor]= useState({})
+  const[colorField,setColorField]= useState([])
+  const[inputData,setInputData] = useState({})
+
+  const colorInput = (e) => {
+    e.preventDefault()
+    setColorField(state => [...state, (<div className="form-input" key={state.length}>
+        <label >color</label>
+        <input type="color" className="input" />
+        <label >qty</label>
+        <input type="number" className="input" />
+    </div>)]
+    )
+
+}
+const handleChange = (e) => {
+  console.log(e.target.required);
+  // if (e.target.required && e.target.value === null) {
+  //     setRequired(true)
+  // } else {
+  //     setRequired(false)
+  // }
+  setInputData(prevState => {
+      return { ...prevState, [e.target.name]: e.target.value }
+  })
+}
+const handleSubmit = (e) => {
+  
+  e.preventDefault()
+
+
+ // try {
+     // axios.post("/api/products", {
+         // data: inputData,
+          //header: cookies.token
+   //   })
+ // }
+ // catch (err) { console.log(err); }
+
+ // navigate(`/admin/${type}`)
+
+}
+
+
+  let inputs 
+  switch (type) {
+    case "products": inputs = [{
+      id: 1,
+      label: "Title",
+      name: "title",
+      type: "text",
+      placeholder: "Apple Macbook Pro",
+      required :true
+    },
+    {
+      id: 2,
+      label: "Price",
+      name:"price",
+      type: "text",
+      placeholder: "Apple Macbook Pro",
+      required :true
+    },
+    {
+      id: 3,
+      label: "Category",
+      name:"category",
+      type: "text",
+      placeholder: "Apple Macbook Pro",
+      required :true
+    },
+    {
+      id: 4,
+      label: "Brand",
+      name:"brand",
+      type: "text",
+      placeholder: "Apple Macbook Pro",
+      required :true
+    },
+    {
+      id: 5,
+      label: "Gender",
+      name:"gender",
+      type: "radio",
+      placeholder: "Apple Macbook Pro",
+      required :true
+    },
+  ]
+      
+      break;
+      case "brand" : inputs= [{
+        id:1,
+        label: "Title",
+        name:"title",
+      type: "text",
+      placeholder: "Apple Macbook Pro",
+      required :true
+      }
+    ]
+      break ;
+      case "category" : inputs= [{
+        id:1,
+        label: "Title",
+        name:"title",
+      type: "text",
+      placeholder: "category name",
+      required :true
+      }]
+      break ;
+      
+  
+    default:
+      break;
+  }
   return (
     <div className='new'>
       <Sidebar/>
@@ -25,7 +143,7 @@ const New = ({inputs,title}) => {
             />
           </div>
           <div className="right">
-            <form>
+            <form > 
               <div className="formInput">
                 <label htmlFor="file">
                   Image:  <DriveFolderUploadIcon className='icon'/>
@@ -35,13 +153,19 @@ const New = ({inputs,title}) => {
                 onChange={e => setFile(e.target.files[0])}/>
               </div>
               {inputs.map((input)=> (
-                <div className="formInput" key={input.id}>
+                <div className="formInput" key={input.id} >
                   <label>{input.label}</label>
-                  <input type={input.type} placeholder={input.placeholder}/>
+                  <input type={input.type} placeholder={input.placeholder} required={input.require} onChange={handleChange}/>
                 </div>
               )
               )}
-              <button>Send</button>
+            
+              <div className='form-input'>
+                <label>description</label>
+                <textarea className='input' required/>
+              </div>
+
+              <button >Send</button>
 
             </form>
           </div>

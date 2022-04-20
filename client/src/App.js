@@ -1,4 +1,4 @@
-import { Container, MantineProvider } from "@mantine/core";
+
 import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Navbar from "./components/Header/Navbar";
@@ -24,23 +24,7 @@ import Home from "./Pages/Home";
 
 function App() {
   return (
-    <MantineProvider
-      defaultProps={{
-        Container: {
-          sizes: {
-            xs: 0,
-            sm: 600,
-            md: 900,
-            lg: 1200,
-            xl: 1536,
-          },
-        },
-      }}>
-      <Header>
-        <Container size='xl'>
-          <Navbar />
-        </Container>
-      </Header>
+   
       <Routes>
         <Route path='/'>
           <Route index element={<Home />} />
@@ -64,7 +48,7 @@ function App() {
           <Route path='edit' element={<Edit inputs={userInputs} />}/>
           </Route>
 
-        <Route path='new' element={<New inputs={userInputs} title="Add New User"/>}/>
+        
        
       </Route>
       <Route path='products'>
@@ -75,20 +59,40 @@ function App() {
           </Route>
 
         
-        <Route path='new' element={<New inputs={productInputs} title="Add New Product"/>}/>
+        <Route path='new' element={<New type="products" title="Add New Product"/>}/>
         
       </Route>
       <Route path='orders'>
-        <Route index element={<List rows={orderRows} columns={orderColumns} btn='Create New Order' />}/>
+        <Route index element={<List rows={orderRows} columns={orderColumns} btn='Create New Order' type="orders" />}/>
         <Route path=':orderId' element={<Single/>}/>
         <Route path='edit' element={<Edit/>}/>
         
+      </Route>
+      <Route path='category'>
+        <Route index element={<List rows={userRows} columns={userColumns} btn='Add New Category'  title="Add New Category" type='category'/>}/>
+        <Route path=':categoryId'  >
+          <Route index element={<Single />}/>
+          <Route path='edit' element={<Edit  />}/>
+          </Route>
+
+        <Route path='new' element={<New type="category" title="Add New Category"/>}/>
+       
+      </Route>
+      <Route path='brand'>
+        <Route index element={<List rows={userRows} columns={userColumns} btn='Add New Brand'  title="Add New Brand" type='brand'/>}/>
+        <Route path=':brandId'  >
+          <Route index element={<Single type='brand'/>}/>
+          <Route path='edit' element={<Edit inputs={userInputs} />}/>
+          </Route>
+
+        <Route path='new' element={<New type="brand" title="Add New Brand"/>}/>
+       
       </Route>
         </Route>
           </Route>
       
       </Routes>
-    </MantineProvider>
+   
   );
 }
 

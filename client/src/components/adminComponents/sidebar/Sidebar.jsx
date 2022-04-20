@@ -55,16 +55,19 @@ const Sidebar = () => {
               <span>Delivery</span>
             </li>
             </Link>
-            <p className="title">USEFUL</p>
+            <Link to='/admin/category' style={{textDecoration:"none"}}>
             <li>
               <InsertChartIcon   className='icon'/>
 
-              <span>Stats</span>
+              <span>Categories</span>
             </li>
+            </Link>
+            <Link to='/admin/brand' style={{textDecoration:"none"}}>
             <li>
               <NotificationsIcon className='icon'/>
-              <span>Notifications</span>
+              <span>Brand</span>
             </li>
+            </Link>
             <p className="title">SERVISE</p>
             <li>
               <SettingsSystemDaydreamOutlinedIcon className='icon' />
