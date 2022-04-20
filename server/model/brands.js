@@ -1,23 +1,35 @@
+const Path = require("path")
+const FS=require("fs")
 const mongoose = require("mongoose")
-const ObjectId=mongoose.Schema.Types.ObjectId
 
 
 // schemas
 const brandSchema = new mongoose.Schema({
     title: {
 		type: String,
-		required:true,
+        required: true,
+        unique:true
     },
     describtion: {
         type: String,
         required:true
     },
-    manufacturer: {
-        type: String,
-        required:true
+    logo: {
+        type: "string",
+        required: true
     }
-})
+},{timestamps:true})
 
+//middleWare
+
+brandSchema.pre("remove", async function (next) {
+    const path = Path.join(Path.parse(__dirname).dir, ...this.logo.split("/"))
+    
+    FS.unlink(path, () => {
+        console.log("logo deleted successully")
+    })
+    next()
+})
 
 
 //static methods
@@ -28,4 +40,7 @@ const brandSchema = new mongoose.Schema({
 
 
 // model 
-const Brand= mongoose.model('brand',brandSchema)
+const Brand = mongoose.model('brand', brandSchema)
+
+
+module.exports= Brand
