@@ -12,7 +12,10 @@ const userSchema = new mongoose.Schema({
 		first: {
 			type: String,
 			required: [true, "enter first name"],
-			validate: [validator.default.isAlpha, "name must contain only letters"],
+			validate: [
+				validator.default.isAlpha,
+				{ field: "FIRST_NAME", msg: "first name must only containes letters" },
+			],
 		},
 		last: {
 			type: String,
@@ -34,16 +37,6 @@ const userSchema = new mongoose.Schema({
 			"this is not a strong password",
 		],
 	},
-	confirmPassword: {
-		type: String,
-		required: [true, "no password confirmation has been added"],
-		validate: [
-			function (conPassword) {
-				return conPassword === this.password;
-			},
-			"confirmed password is not the same as the password",
-		],
-	},
 	role: {
 		type: String,
 		enum: ["USER", "ADMIN"],
@@ -56,14 +49,11 @@ const userSchema = new mongoose.Schema({
 	},
 	orders: [
 		{
-			orderId: {
 				type: ObjectId,
-			},
+				ref: "order",
 		},
 	],
-});
-
-
+},{timestamps:true});
 
 // middleware
 //presave middleware to hash the password before saving --- prevent confirmPassword from being saved
@@ -77,7 +67,9 @@ userSchema.pre("save", async function (next) {
 //static methods
 
 //document methods
-
+userSchema.methods.checkPassword = async function (password) {
+	return await bcrypt.compare(password, this.password);
+};
 // model
 
 const User = mongoose.model("user", userSchema);
