@@ -41,13 +41,12 @@ const Datatable = ({rows,columns,btn,title,type}) => {
 
       </div>
    
-           <DataGrid
+        <DataGrid
         rows={rows}
         columns={columns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[9]}
         checkboxSelection
-        
       />
     </div>
   )

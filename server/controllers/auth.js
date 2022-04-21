@@ -9,10 +9,16 @@ const secret = process.env.SECTRET_STRING;
 exports.PostSignUp = async (req, res, next) => {
 	const { name, email, password, confirmPassword } = req.body;
 
+	const veriviationCode= (Math.floor(Math.random()*10000*Date.now())).toString(16)
+
 	const user = new User({
 		name: name,
 		email: email,
 		password: password,
+		verification: {
+			verified: false,
+			verificationCode: veriviationCode
+		}
 	});
 
 	try {

@@ -175,7 +175,7 @@ exports.getProducts = async (req, res, next) => {
 				from: "products",
 				localField: "productId",
 				foreignField: "_id",
-				as: "product",
+				as: "parentProduct",
 				pipeline: [
 					{
 						$project: {
@@ -193,7 +193,7 @@ exports.getProducts = async (req, res, next) => {
 				ageGroup: 1,
 				sku: 1,
 				rate: "$reviews.rating",
-				product: 1,
+				parentProduct: 1,
 				color: 1,
 				soldItems: 1,
 			},

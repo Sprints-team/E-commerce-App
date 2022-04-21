@@ -81,14 +81,12 @@ productSchema.statics.addImages = async function (id, imgArr) {
 productSchema.methods.addProduct = async function () {
 	const stock = this.colors;
 
-	try {
 		// checking if the brand or category exist
 		const catPromise = Category.findOne({ _id: this.category }).select("title");
 		//passing the abrv to the next middleware
 		const brdPromise = Brand.findOne({ _id: this.brand }).select("title");
 		const results = await Promise.all([catPromise, brdPromise]);
 		const [cat, brd] = results;
-		this.abrv = cat.abrv;
 		let errMsg = "";
 		if (!cat) errMsg += "category doesn't exist";
 		if (!brd)
@@ -119,7 +117,6 @@ productSchema.methods.addProduct = async function () {
 		this.images = undefined;
 		this.stock = undefined;
 		this.colors = undefined;
-		this.abrv = undefined;
 		this.skus = skus;
 		const save = this.save();
 		const result = await Promise.all([...promises, save]);
@@ -127,9 +124,6 @@ productSchema.methods.addProduct = async function () {
 		return {
 			saved: true,
 		};
-	} catch (err) {
-		return err;
-	}
 };
 
 //the Model

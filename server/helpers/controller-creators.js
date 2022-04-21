@@ -4,17 +4,16 @@ const NotFound = require("../errors/not-found");
 exports.deleteHandlerCreator = (Model, modelName, cb) => {
 	return async (req, res, next) => {
 		const id = req.params.id;
-    try {
-      
-			const doc = await Model.findOne({_id:id});
+		try {
+			const doc = await Model.findOne({ _id: id });
 
 			// so that mongoose middleware would work
-			await doc.remove()
+			await doc?.remove();
 			if (!doc) {
-        throw new NotFound(`there is no ${modelName} with that id`);
+				throw new NotFound(`there is no ${modelName} with that id`);
 			}
 			res.status(200).json({ msg: `${modelName} deleted successfully` });
-      return cb(doc)
+			return cb(doc);
 		} catch (err) {
 			next(err, req, res, next);
 		}
