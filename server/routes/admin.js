@@ -12,7 +12,19 @@ const storage = multer.diskStorage({
 		cb(null, `image-${Date.now()}.${extension}`);
 	},
 });
-const upload = multer({ storage: storage });
+const upload = multer({
+	storage: storage,
+	fileFilter: (req, file, cb) => {
+		if (
+			file &&
+			file.mimetype !== "image/png" &&
+			file.mimetype !== "image/jpeg"
+		) {
+			req.rightExtension=false
+			cb(null, false)
+		} 
+	},
+});
 
 // validator middlewares
 const validator = require("../middleware/validators/validator-middleware");
@@ -46,7 +58,11 @@ const { addBrand, deleteBrand } = require("../controllers/brand");
 const { updateOrderStatus, getOrders } = require("../controllers/order");
 const { getUsers, updateStatus } = require("../controllers/user");
 const { getStatistics } = require("../controllers/initial-data");
-const { addCoupon, deleteCopoun,getCopouns } = require("../controllers/coupon");
+const {
+	addCoupon,
+	deleteCopoun,
+	getCopouns,
+} = require("../controllers/coupon");
 
 // router
 
@@ -54,7 +70,7 @@ const { addCoupon, deleteCopoun,getCopouns } = require("../controllers/coupon");
 router.get("/statistics", getStatistics);
 router.get("/orders", validator(getOrderSchem), getOrders);
 router.get("/users", validator(getUsersSchema), getUsers);
-router.get("/copouns",getCopouns)
+router.get("/copouns", getCopouns);
 
 //post
 router.post(
