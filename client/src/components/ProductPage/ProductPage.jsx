@@ -1,4 +1,4 @@
-import { Container } from "@mantine/core";
+import { Container , MantineProvider} from "@mantine/core";
 import { Rating } from "react-simple-star-rating";
 import classes from "../../styles/ProductPage/ProductPage.module.scss";
 import ProductImageSlider from "./ProductImageSlider";
@@ -6,6 +6,8 @@ import { useState, useEffect } from "react";
 import ColorSwitch from "./ColorSwitch";
 import Reviews from "./Reviews";
 import { useLocation } from "react-router-dom";
+import Header from './../Header/Header';
+import Navbar from './../Header/Navbar'
 
 //! DUMMY_DATA
 const imageRef = [
@@ -69,6 +71,23 @@ const ProductPage = () => {
   }, [pathname]);
   console.log(size);
   return (
+    <MantineProvider
+    defaultProps={{
+      Container: {
+        sizes: {
+          xs: 0,
+          sm: 600,
+          md: 900,
+          lg: 1200,
+          xl: 1536,
+        },
+      },
+    }}>
+    <Header>
+      <Container size='xl'>
+        <Navbar />
+      </Container>
+    </Header>
     <Container size='xl'>
       <div className={classes.ProductContainer}>
         <div className={classes.image}>
@@ -120,6 +139,7 @@ const ProductPage = () => {
       <h2>Customer Reviews</h2>
       <Reviews reviews={reviews} />
     </Container>
+    </MantineProvider>
   );
 };
 

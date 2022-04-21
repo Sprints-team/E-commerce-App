@@ -33,9 +33,9 @@ const Navbar = () => {
             <Link to='/'>Home</Link>
           </li>
           <li>Shop</li>
-          <li>Pages</li>
-          <li>Contact</li>
-          <li>LookBook</li>
+          <li>MEN</li>
+          <li>WOMEN</li>
+          <li>KIDS</li>
         </ul>
       </Drawer>
       <li className={classes.nav}>
@@ -44,9 +44,9 @@ const Navbar = () => {
             <Link to='/'>Home</Link>
           </li>
           <li>Shop</li>
-          <li>Pages</li>
-          <li>Contact</li>
-          <li>LookBook</li>
+          <li>MEN</li>
+          <li>WOMEN</li>
+          <li>KIDS</li>
         </ul>
       </li>
 
