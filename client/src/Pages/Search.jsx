@@ -17,6 +17,9 @@ const Search = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    window.document.documentElement.style.scrollBehavior = "smooth";
+    return () =>
+      (window.document.documentElement.style.scrollBehavior = "auto");
   }, [pathname, searchParams]);
 
   return (
