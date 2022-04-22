@@ -6,7 +6,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background-color: #202125; */
 }
 
 code {
@@ -14,8 +13,10 @@ code {
     monospace;
 }
 a {
-  color: inherit; /* blue colors for links too */
-  text-decoration: inherit; /* no underline */
+  color: inherit;
+  text-decoration: inherit;
+  line-height: 0;
+  transition: all ease 0.2s;
 }
 a:hover,
 a:active {

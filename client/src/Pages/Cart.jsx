@@ -1,8 +1,5 @@
-// import Image from "next/image";
 import { Container } from "@mantine/core";
 import { useSelector } from "react-redux";
-
-// import myLoader from "./../helper/myLoader";
 import classes from "../styles/Cart/Cart.module.scss";
 
 /* const cartItems = {

@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation, Thumbs } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
+import { Swiper, SwiperSlide } from "swiper/react";
 import "../../styles/ProductPage/ProductImageSlider.scss";
 
 const ProductImageSlider = ({ images }) => {
