@@ -49,12 +49,7 @@ const Sidebar = () => {
               <span>Orders</span>
             </li>
             </Link>
-            <Link to='/admin/under' style={{textDecoration:"none"}}>
-            <li>
-             <LocalShippingIcon  className='icon' />
-              <span>Delivery</span>
-            </li>
-            </Link>
+          
             <Link to='/admin/category' style={{textDecoration:"none"}}>
             <li>
               <InsertChartIcon   className='icon'/>

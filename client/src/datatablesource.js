@@ -234,36 +234,21 @@ export const userColumns = [
   export const productColumns = [
     { field: "id", headerName: "ID", width: 70 },
     {
-      field: "product",
-      headerName: "Product",
-      width: 230,
-      renderCell: (params) => {
-        return (
-          <div className="cellWithImg">
-            <img className="cellImg" src={params.row.img} alt="avatar" />
-            {params.row.product}
-          </div>
-        );
-      },
-    },
+      field: "name",
+      headerName: "Product",width: 100 },
+    
     {
-      field: "stock",
+      field: "gender",
       headerName: "Stock",
       width: 230,
     },
   
    
     {
-      field: "status",
-      headerName: "Status",
+      field: "ageGroup",
+      headerName: "AgeGroup",
       width: 160,
-      renderCell: (params) => {
-        return (
-          <div className={`cellWithStatus ${params.row.status}`}>
-            {params.row.status}
-          </div>
-        );
-      },
+      
     },
     {
         field: "price",
@@ -361,6 +346,41 @@ export const userColumns = [
     },
     
   ];
+
+
+
+  export const brandColumns = [
+    { field: "id", headerName: "ID", width: 70 },
+    
+   
+    {
+      field: "title",
+      headerName: "Title",
+      width: 150,
+    },
+   
+   
+  
+  ];
+
+  export const categoryColumns = [
+    { field: "id", headerName: "ID", width: 70 },
+    
+   
+    {
+      field: "title",
+      headerName: "Title",
+      width: 150,
+    },
+   
+   
+  
+  ];
+
+  
+
+
+  
 
 
   

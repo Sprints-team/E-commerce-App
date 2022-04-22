@@ -1,4 +1,5 @@
 import React from 'react'
+import "./Adminlogin.scss"
 import { useState } from 'react';
 
 const Adminlogin = () => {
