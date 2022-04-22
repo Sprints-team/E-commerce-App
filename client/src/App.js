@@ -1,40 +1,35 @@
 import { Route, Routes } from "react-router-dom";
-import Header from "./components/Header/Header";
-import Navbar from "./components/Header/Navbar";
 import ProductPage from "./components/ProductPage/ProductPage";
-import ProductsList from "./components/Productslist/ProductsList";
+import {
+  orderColumns,
+  orderRows,
+  productColumns,
+  productRows,
+  userColumns,
+  userRows,
+} from "./datatablesource";
+import { productInputs, userInputs } from "./formSource";
+import Adminhome from "./Pages/adminpages/adminhome/Adminhome.jsx";
+import Edit from "./Pages/adminpages/edit/Edit.jsx";
+import List from "./Pages/adminpages/list/List.jsx";
+import Adminlogin from "./Pages/adminpages/login/Adminlogin";
 import New from "./Pages/adminpages/new/New.jsx";
 import Single from "./Pages/adminpages/single/Single.jsx";
-import { userInputs, productInputs } from "./formSource";
-import List from "./Pages/adminpages/list/List.jsx";
-
-import {
-  userColumns,
-  productRows,
-  productColumns,
-  userRows,
-  orderRows,
-  orderColumns,
-} from "./datatablesource";
-
-import Edit from "./Pages/adminpages/edit/Edit.jsx";
-import Underprogress from "./Pages/adminpages/underprogress/Underprogress.jsx";
-import Adminhome from "./Pages/adminpages/adminhome/Adminhome.jsx";
-import Adminlogin from "./Pages/adminpages/login/Adminlogin";
-import products from "./data.json";
-
 import Cart from "./Pages/Cart";
 import Home from "./Pages/Home";
+import Search from "./Pages/Search";
 
 function App() {
   return (
     <Routes>
       <Route path='/'>
         <Route index element={<Home />} />
+
         <Route path='products'>
-          <Route index element={<ProductsList products={products} />} />
+          <Route index element={<Search />} />
           <Route path=':productId' element={<ProductPage />} />
         </Route>
+
         <Route path='cart' element={<Cart />} />
 
         <Route path='admin'>

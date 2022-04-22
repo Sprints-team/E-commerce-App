@@ -1,11 +1,11 @@
 import React from "react";
-import "./Single.scss";
-import Chart from "../../../components/adminComponents/chart/Chart";
-import Sidebar from "../../../components/adminComponents/sidebar/Sidebar";
-import Navbar from "../../../components/adminComponents/navbar/Navbar";
-import TableList from "../../../components/adminComponents/table/TableList";
 // import { Link } from 'react-router-dom';
 import { useParams } from "react-router-dom";
+import Chart from "../../../components/adminComponents/chart/Chart";
+import Navbar from "../../../components/adminComponents/navbar/Navbar";
+import Sidebar from "../../../components/adminComponents/sidebar/Sidebar";
+import TableList from "../../../components/adminComponents/table/TableList";
+import "./Single.scss";
 const Single = ({ users, type }) => {
   const params = useParams();
   console.log(params);

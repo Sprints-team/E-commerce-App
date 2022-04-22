@@ -1,10 +1,7 @@
-import { Search } from "tabler-icons-react";
-import { User } from "tabler-icons-react";
-import { Bell } from "tabler-icons-react";
-import { ThemeIcon, Burger, Drawer } from "@mantine/core";
+import { Badge, Burger, Drawer, ThemeIcon } from "@mantine/core";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
+import { Search, ShoppingCart, User } from "tabler-icons-react";
 import classes from "../../styles/Header/Navbar.module.scss";
 
 const Navbar = () => {
@@ -30,23 +27,39 @@ const Navbar = () => {
         transition='slide-right'>
         <ul className={classes.drawerLinks}>
           <li>
-            <Link to='/'>Home</Link>
+            <Link to='/'>HOME</Link>
           </li>
-          <li>Shop</li>
-          <li>MEN</li>
-          <li>WOMEN</li>
-          <li>KIDS</li>
+          <li>
+            <Link to='/products'>SHOP</Link>
+          </li>
+          <li>
+            <Link to='/products?gender=men'>MEN</Link>
+          </li>
+          <li>
+            <Link to='/products?gender=women'>WOMEN</Link>
+          </li>
+          <li>
+            <Link to='/products?gender=kids'>KIDS</Link>
+          </li>
         </ul>
       </Drawer>
       <li className={classes.nav}>
         <ul>
           <li>
-            <Link to='/'>Home</Link>
+            <Link to='/'>HOME</Link>
           </li>
-          <li>Shop</li>
-          <li>MEN</li>
-          <li>WOMEN</li>
-          <li>KIDS</li>
+          <li>
+            <Link to='/products'>SHOP</Link>
+          </li>
+          <li>
+            <Link to='/products?gender=men'>MEN</Link>
+          </li>
+          <li>
+            <Link to='/products?gender=women'>WOMEN</Link>
+          </li>
+          <li>
+            <Link to='/products?gender=kids'>KIDS</Link>
+          </li>
         </ul>
       </li>
 
@@ -60,25 +73,26 @@ const Navbar = () => {
             />
           </li>
           <li>
-            <ThemeIcon className={classes.searchIcon}>
-              <Search size={48} strokeWidth={2} />
-            </ThemeIcon>
+            <Link to='/'>
+              <ThemeIcon className={classes.searchIcon}>
+                <Search size={50} strokeWidth={2} />
+              </ThemeIcon>
+            </Link>
           </li>
           <li>
-            <ThemeIcon className={classes.searchIcon}>
-              <User size={48} strokeWidth={2} />
-            </ThemeIcon>
+            <Link to='/'>
+              <ThemeIcon className={classes.profileIcon}>
+                <User size={50} strokeWidth={2} />
+              </ThemeIcon>
+            </Link>
           </li>
-          <li>
-            <ThemeIcon className={classes.searchIcon}>
-              <Bell
-                size={48}
-                strokeWidth={2}
-                sx={{
-                  "&:hover": { color: "red" },
-                }}
-              />
-            </ThemeIcon>
+          <li className={classes.cart}>
+            <Link to='/cart'>
+              <ThemeIcon className={classes.cartIcon}>
+                <ShoppingCart size={50} strokeWidth={2} />
+              </ThemeIcon>
+              <Badge className={classes.badge}>0</Badge>
+            </Link>
           </li>
         </ul>
       </li>

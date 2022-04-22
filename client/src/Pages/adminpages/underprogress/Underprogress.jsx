@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const Underprogress = () => {
-  return (
-    <div>Underprogress</div>
-  )
-}
+  return <div>Underprogress</div>;
+};
 
-export default Underprogress
+export default Underprogress;

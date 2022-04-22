@@ -40,16 +40,50 @@
     .burger,
     .searchIcon,
     .profileIcon,
-    .notificationIcon {
+    .cartIcon {
       background-color: #fff;
       color: #000;
-      // transition: all ease 0.3s;
+    }
+    .burger,
+    .searchIcon,
+    .profileIcon {
+      transition: all ease 0.2s;
       &:hover {
         color: variables.$primaryColor;
       }
     }
     @media screen and (max-width: 768px) {
       gap: 1rem;
+    }
+    .cart {
+      align-self: initial;
+      a {
+        display: flex;
+        flex-wrap: nowrap;
+        width: 50px;
+        align-items: center;
+        cursor: pointer;
+        outline: 2px solid rgb(245 95 78 / 61%);
+        border-radius: 0.25em;
+        box-shadow: 0px 2px 4px 0px rgb(0 0 0 / 15%);
+        transition: all 0.2s ease-in-out;
+        &:hover {
+          color: variables.$primaryColor;
+          box-shadow: 0px 2px 6px 0px rgb(0 0 0 / 50%);
+        }
+        &:active {
+          box-shadow: 0px 2px 6px 0px rgb(0 0 0 / 70%);
+        }
+        &:hover .badge {
+          background-color: variables.$primaryColor;
+        }
+        .badge {
+          color: #fff;
+          padding: 0.5em;
+          cursor: pointer;
+          background-color: variables.$primaryColor;
+        }
+      }
     }
   }
 

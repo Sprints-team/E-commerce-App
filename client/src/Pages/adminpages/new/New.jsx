@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import "./New.scss";
 import DriveFolderUploadIcon from "@mui/icons-material/DriveFolderUpload";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../../../components/adminComponents/navbar/Navbar";
 import Sidebar from "../../../components/adminComponents/sidebar/Sidebar";
-import axios from "../../../hooks/axios";
-import { useNavigate } from "react-router-dom";
+import "./New.scss";
 const New = ({ title, type }) => {
   let navigate = useNavigate();
   const [file, setFile] = useState("");

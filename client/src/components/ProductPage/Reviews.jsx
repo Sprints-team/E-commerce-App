@@ -1,6 +1,6 @@
-import classes from "../../styles/ProductPage/Reviews.module.scss";
 import { Avatar } from "@mantine/core";
 import { Rating } from "react-simple-star-rating";
+import classes from "../../styles/ProductPage/Reviews.module.scss";
 const Reviews = ({ reviews }) => {
   return (
     <ul className={classes.container}>

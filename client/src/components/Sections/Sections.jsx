@@ -1,12 +1,10 @@
 import { Button } from "@mantine/core";
 import { useScrollIntoView } from "@mantine/hooks";
-
+import classes from "../../styles/Sections/Sections.module.scss";
+import Cateogres from "./Cateogres";
 import Collections from "./Collections";
 import NewArrival from "./NewArrival";
-import Cateogres from "./Cateogres";
 import Statics from "./Statics";
-
-import classes from "../../styles/Sections/Sections.module.scss";
 
 const Sections = () => {
   const { scrollIntoView: scrollIntoCollection, targetRef: collectionRef } =
@@ -30,31 +28,27 @@ const Sections = () => {
     <div className={classes.container}>
       <nav>
         <Button
-          variant="outline"
-          color="red"
-          onClick={() => scrollIntoCollection({ alignment: "start" })}
-        >
+          variant='outline'
+          color='red'
+          onClick={() => scrollIntoCollection({ alignment: "start" })}>
           Collections
         </Button>
         <Button
-          variant="outline"
-          color="red"
-          onClick={() => scrollIntoNewArravail({ alignment: "start" })}
-        >
+          variant='outline'
+          color='red'
+          onClick={() => scrollIntoNewArravail({ alignment: "start" })}>
           New Arrivals
         </Button>
         <Button
-          variant="outline"
-          color="red"
-          onClick={() => scrollIntoCateogres({ alignment: "start" })}
-        >
+          variant='outline'
+          color='red'
+          onClick={() => scrollIntoCateogres({ alignment: "start" })}>
           Cateogres
         </Button>
         <Button
-          variant="outline"
-          color="red"
-          onClick={() => scrollIntoStatics({ alignment: "start" })}
-        >
+          variant='outline'
+          color='red'
+          onClick={() => scrollIntoStatics({ alignment: "start" })}>
           Statics
         </Button>
       </nav>
