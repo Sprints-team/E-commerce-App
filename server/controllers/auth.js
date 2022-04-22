@@ -1,15 +1,21 @@
 const jwt = require("jsonwebtoken");
 
+const url = require("url");
+
 const User = require("../model/user");
 
 const BadRequest = require("../errors/bad-request");
+
+const transproter = require("../utils/email-transporter");
 
 const secret = process.env.SECTRET_STRING;
 
 exports.PostSignUp = async (req, res, next) => {
 	const { name, email, password, confirmPassword } = req.body;
 
-	const veriviationCode= (Math.floor(Math.random()*10000*Date.now())).toString(16)
+	const veriviationCode = Math.floor(
+		Math.random() * 10000 * Date.now()
+	).toString(16);
 
 	const user = new User({
 		name: name,
@@ -17,12 +23,20 @@ exports.PostSignUp = async (req, res, next) => {
 		password: password,
 		verification: {
 			verified: false,
-			verificationCode: veriviationCode
-		}
+			verificationCode: veriviationCode,
+		},
 	});
 
 	try {
 		await user.save();
+
+		transproter.sendMail({
+			to: email,
+			from: "ahmed.mamdouh7548@gmail.com",
+			subject: "verify your acount",
+			html: `<p>click on this <a href="http://localhost:3000/auth/verify?userId=${user._id}&code=${veriviationCode}">link</a> to change your password</p>`,
+		});
+
 		return res
 			.status(200)
 			.json({ msg: "user signed up successfuly successfully" });
@@ -35,6 +49,25 @@ exports.PostSignUp = async (req, res, next) => {
 				next
 			);
 		}
+		next(err, req, res, next);
+	}
+};
+
+exports.verifyAcount = async (req, res, next) => {
+	const { userId, code } = req.query;
+
+	try {
+		const user = await User.findById(userId);
+
+		if (user.verification.verificationCode === code) {
+			user.verification.verified = true;
+			
+
+			await user.save();
+
+			res.redirect("/");
+		}
+	} catch (err) {
 		next(err, req, res, next);
 	}
 };
@@ -62,7 +95,12 @@ exports.postLogin = async (req, res) => {
 		if (user.status === "INACTIVE_ACOUNT")
 			res.status(403).json({ error: "403", msg: "this acount is inactivated" });
 		const token = jwt.sign(
-			{ userName: user.name, role: user.role, email: user.email, userId: user._id },
+			{
+				userName: user.name,
+				role: user.role,
+				email: user.email,
+				userId: user._id,
+			},
 			secret
 		);
 		res.status(200).json({
@@ -77,9 +115,6 @@ exports.postLogin = async (req, res) => {
 		console.log(err);
 	}
 };
-
-
-
 
 exports.activateAccount = async (req, res, next) => {
 	const { email, password } = req.body;

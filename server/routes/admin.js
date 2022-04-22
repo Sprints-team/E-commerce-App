@@ -20,9 +20,10 @@ const upload = multer({
 			file.mimetype !== "image/png" &&
 			file.mimetype !== "image/jpeg"
 		) {
-			req.rightExtension=false
-			cb(null, false)
-		} 
+			req.rightExtension = false;
+			cb(null, false);
+		}
+		cb(null, true);
 	},
 });
 
@@ -45,6 +46,7 @@ const getUsersSchema = require("../ajv/validator-schemas/get-users");
 const statuschmea = require("../ajv/validator-schemas/status");
 const updateStockSchema = require("../ajv/validator-schemas/update-stock");
 const copounSchema = require("../ajv/validator-schemas/copoun");
+const adminGetProductSchema = require("../ajv/validator-schemas/adminGetProducts.js");
 
 //controllers
 const {
@@ -52,6 +54,8 @@ const {
 	deleteProduct,
 	updateProduct,
 	updateStock,
+	adminGetProducts,
+	getParentProduct,
 } = require("../controllers/product");
 const { deleteCategory, addCategory } = require("../controllers/category");
 const { addBrand, deleteBrand } = require("../controllers/brand");
@@ -71,6 +75,12 @@ router.get("/statistics", getStatistics);
 router.get("/orders", validator(getOrderSchem), getOrders);
 router.get("/users", validator(getUsersSchema), getUsers);
 router.get("/copouns", getCopouns);
+router.get("/products", validator(adminGetProductSchema), adminGetProducts);
+router.get(
+	"/product/:id",
+	validator(objectIdCompiledSchema, true),
+	getParentProduct
+);
 
 //post
 router.post(
