@@ -1,5 +1,6 @@
 import { Center, Container, Loader } from "@mantine/core";
-import { useSearchParams } from "react-router-dom";
+import { useEffect } from "react";
+import { useLocation, useSearchParams } from "react-router-dom";
 import Header from "../components/Header/Header";
 import Navbar from "../components/Header/Navbar";
 import ProductsList from "../components/Productslist/ProductsList";
@@ -7,11 +8,16 @@ import { useGetProductsQuery } from "../redux/productsSlice";
 
 const Search = () => {
   const [searchParams] = useSearchParams();
+  const { pathname } = useLocation();
   // const [searchParams, setSearchParams] = useSearchParams();
   const params = Object.fromEntries(searchParams);
   console.log(params);
   const { data, error, isFetching } = useGetProductsQuery();
   console.log(data);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname, searchParams]);
 
   return (
     <>
