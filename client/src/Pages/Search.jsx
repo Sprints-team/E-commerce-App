@@ -17,7 +17,7 @@ const Search = () => {
       <Container size='xl'>
         <Navbar />
       </Container>
-      {error && (
+      {error && !isFetching && (
         <Center style={{ height: 200 }}>
           <div>We can fetch data !</div>
         </Center>

@@ -87,7 +87,6 @@ productSchema.methods.addProduct = async function () {
   const brdPromise = Brand.findOne({ _id: this.brand }).select("title");
   const results = await Promise.all([catPromise, brdPromise]);
   const [cat, brd] = results;
-  // this.abrv = cat.abrv;
   let errMsg = "";
   if (!cat) errMsg += "category doesn't exist";
   if (!brd)
@@ -118,7 +117,6 @@ productSchema.methods.addProduct = async function () {
   this.images = undefined;
   this.stock = undefined;
   this.colors = undefined;
-  this.abrv = undefined;
   this.skus = skus;
   const save = this.save();
   const result = await Promise.all([...promises, save]);

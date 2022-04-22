@@ -5,6 +5,7 @@ const ObjectId = mongoose.Types.ObjectId;
 const { deleteHandlerCreator } = require("../helpers/controller-creators");
 const getColorImages = require("../helpers/ge-color-Images");
 const SKU = require("../model/sku");
+const NotFound = require("../errors/not-found");
 
 /* data received:
       1-the new product data  
@@ -155,6 +156,7 @@ exports.getProduct = async (req, res, next) => {
 
 //?get all products data || get only the title,brice,id,discount, and images
 exports.getProducts = async (req, res, next) => {
+<<<<<<< HEAD
   const {
     title,
     brand,
@@ -220,6 +222,73 @@ exports.getProducts = async (req, res, next) => {
         ],
       },
     });
+=======
+	const {
+		title,
+		brand,
+		category,
+		gender,
+		ageGroup,
+		price,
+		rating,
+		sort,
+		skip,
+		limit,
+		bestSeller,
+	} = req.body;
+	//
+	//1->match 2-->lookup || project
+	let pipeline = [
+		{
+			$lookup: {
+				from: "products",
+				localField: "productId",
+				foreignField: "_id",
+				as: "parentProduct",
+				pipeline: [
+					{
+						$project: {
+							skus: 1,
+						},
+					},
+				],
+			},
+		},
+		{
+			$project: {
+				title: 1,
+				price: 1,
+				images: 1,
+				ageGroup: 1,
+				sku: 1,
+				rate: "$reviews.rating",
+				parentProduct: 1,
+				color: 1,
+				soldItems: 1,
+			},
+		},
+	];
+	const matchArr = [];
+	const sortArr = [];
+	// first to match with
+	if (title)
+		matchArr.push({
+			$match: {
+				$or: [
+					{
+						title: {
+							$regex: `.*${title}.*`,
+						},
+					},
+					{
+						sku: {
+							$regex: `.*${title}.*`,
+						},
+					},
+				],
+			},
+		});
+>>>>>>> 333c09e122cc3b7fbf772ad5ef84452be208c963
 
   if (price && (price.hasOwnProperty("gt") || price.hasOwnProperty("lt"))) {
     const compare = {};
@@ -326,11 +395,101 @@ exports.getProducts = async (req, res, next) => {
   }
 };
 
+exports.adminGetProducts = async (req, res, next) => {
+	console.log(req.body);
+	const { title, brand, category, gender, ageGroup, price, skip, limit } = req.body;
+	const query = Product.find();
+
+	if (title) query.where("title").regex(`.*${title}.*`);
+	if (brand) query.where("brand").equals(brand);
+	if (category) query.where("category").equals(category);
+	if (gender) query.where("gender").equals(gender);
+	if (ageGroup) query.where("ageGroup").equals(ageGroup);
+	if (price?.gt) query.where("price").gte(price.gt);
+	if (price?.lt) query.where("price").lte(price.lt);
+
+	query.skip(skip), query.limit(limit || 20);
+
+	query.populate(["skus", "category", "brand"]);
+
+	try {
+		const result = await query;
+		res.status(200).json(result);
+	} catch (err) {
+		next(err, req, res, next);
+	}
+};
+
+exports.getParentProduct = async (req, res, next) => {
+	const id = req.params.id;
+
+	const query = Product.findOne({ _id: id });
+
+	query.populate(["skus", "category", "brand"]);
+	try {
+		const result = await query;
+
+		if (!result) {
+			throw new NotFound("there is no product with that id");
+		}
+		res.status(200).json(result);
+	} catch (err) {
+		next(err, req, res, next);
+	}
+};
+
 exports.updateProduct = async (req, res, next) => {
+<<<<<<< HEAD
   const newPrice = req.body.price || req.query.price;
   const newDiscount = req.body.discount || req.query.discount;
   const productId = req.body.id;
   const single = req.body.single;
+=======
+	const newPrice = req.body.price || req.query.price;
+	const newDiscount = req.body.discount || req.query.discount;
+	const productId = req.body.id;
+	const single = req.body.single;
+
+	let updateProductQuery;
+	let updateParentProduct = Promise.resolve();
+
+	try {
+		if (single) {
+			updateProductQuery = SKU.updateOne().where("_id").equals(productId);
+			if (newPrice) {
+				updateProductQuery.set("price", newPrice);
+			}
+			if (newDiscount) updateProductQuery.set("discount", newDiscount);
+			const result = await updateProductQuery;
+			if (result.modifiedCount === 0) {
+				return res
+					.status(400)
+					.json({ error: "400", msg: "couldn't update product " });
+			}
+		} else {
+			updateProductQuery = SKU.updateMany()
+				.where("productId")
+				.equals(productId);
+			updateParentProduct = Product.updateOne().where("_id").equals(productId);
+			if (newPrice) {
+				updateProductQuery.set("price", newPrice);
+				updateParentProduct.set("price", newPrice);
+			}
+			if (newDiscount) {
+				updateProductQuery.set("discount", newDiscount);
+				updateParentProduct.set("discount", newDiscount);
+			}
+			const result = await Promise.all([
+				updateParentProduct,
+				updateProductQuery,
+			]);
+			if (result[0].modifiedCount === 0 || result[1].modifiedCount === 0) {
+				return res
+					.status(400)
+					.json({ error: "400", msg: "couldn't update product " });
+			}
+		}
+>>>>>>> 333c09e122cc3b7fbf772ad5ef84452be208c963
 
   let updateProductQuery;
   let updateParentProduct = Promise.resolve();
@@ -389,11 +548,19 @@ exports.updateStock = async (req, res, next) => {
 
   const updateQuery = SKU.updateOne().where("_id").equals(skuId);
 
+<<<<<<< HEAD
   newStock.forEach((prod) => {
     const path = `sizes.${prod.size}.qty`;
     console.log(path);
     updateQuery.set(path, prod.qty);
   });
+=======
+	newStock.forEach((prod) => {
+		const path = `sizes.${prod.size}.qty`;
+		console.log(path);
+		updateQuery.set(path, prod.qty);
+	});
+>>>>>>> 333c09e122cc3b7fbf772ad5ef84452be208c963
 
   const result = await updateQuery;
 
