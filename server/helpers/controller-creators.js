@@ -8,7 +8,7 @@ exports.deleteHandlerCreator = (Model, modelName, cb) => {
       const doc = await Model.findOne({ _id: id });
 
       // so that mongoose middleware would work
-      await doc.remove();
+      await doc?.remove();
       if (!doc) {
         throw new NotFound(`there is no ${modelName} with that id`);
       }

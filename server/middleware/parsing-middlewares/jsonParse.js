@@ -1,7 +1,6 @@
 
 const parseJson = (req, res, next) => {
     if (req.body.colors) {
-        console.log(req.body.colors)
         try {
             req.body.colors = JSON.parse(req.body.colors);
             return next();

@@ -37,6 +37,16 @@ const userSchema = new mongoose.Schema({
 			"this is not a strong password",
 		],
 	},
+	verification: {
+		verified: {
+			type: Boolean,
+			default:false
+		},
+		verificationCode: {
+			type:String,
+		}
+	}
+	,
 	role: {
 		type: String,
 		enum: ["USER", "ADMIN"],
