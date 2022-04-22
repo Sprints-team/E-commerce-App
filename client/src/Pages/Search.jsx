@@ -1,5 +1,6 @@
 import { Center, Container, Loader } from "@mantine/core";
 import { useSearchParams } from "react-router-dom";
+import Header from "../components/Header/Header";
 import Navbar from "../components/Header/Navbar";
 import ProductsList from "../components/Productslist/ProductsList";
 import { useGetProductsQuery } from "../redux/productsSlice";
@@ -14,9 +15,11 @@ const Search = () => {
 
   return (
     <>
-      <Container size='xl'>
-        <Navbar />
-      </Container>
+      <Header>
+        <Container size='xl'>
+          <Navbar />
+        </Container>
+      </Header>
       {error && !isFetching && (
         <Center style={{ height: 200 }}>
           <div>We can fetch data !</div>
