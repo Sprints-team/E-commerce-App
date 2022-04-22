@@ -11,7 +11,7 @@ const Cateogres = () => {
       <h2>Our Top Cateogres</h2>
       {error && (
         <Center style={{ height: 200 }}>
-          <div>We can fetch data !</div>
+          <div>We can't fetch data!</div>
         </Center>
       )}
       {isFetching && (

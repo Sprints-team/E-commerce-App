@@ -6,6 +6,7 @@
   justify-content: space-between;
   font-weight: 600;
   height: 70px;
+  margin-bottom: 30px;
 
   ul,
   li {
@@ -60,7 +61,7 @@
       a {
         display: flex;
         flex-wrap: nowrap;
-        width: 50px;
+        padding: 0.25em;
         align-items: center;
         cursor: pointer;
         outline: 2px solid rgb(245 95 78 / 61%);
@@ -79,9 +80,11 @@
         }
         .badge {
           color: #fff;
-          padding: 0.5em;
           cursor: pointer;
           background-color: variables.$primaryColor;
+          font-size: 0.85rem;
+          padding: 0.9em 0.5em;
+          line-height: 1;
         }
       }
     }

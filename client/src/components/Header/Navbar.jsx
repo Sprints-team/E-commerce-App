@@ -1,5 +1,6 @@
 import { Badge, Burger, Drawer, ThemeIcon } from "@mantine/core";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Search, ShoppingCart, User } from "tabler-icons-react";
 import classes from "../../styles/Header/Navbar.module.scss";
@@ -7,6 +8,7 @@ import classes from "../../styles/Header/Navbar.module.scss";
 const Navbar = () => {
   const [opened, setOpened] = useState(false);
   const title = opened ? "Close navigation" : "Open navigation";
+  const quantity = useSelector((state) => state.cart.quantity);
   return (
     <ul className={classes.container}>
       <li className={classes.logo}>
@@ -91,7 +93,9 @@ const Navbar = () => {
               <ThemeIcon className={classes.cartIcon}>
                 <ShoppingCart size={50} strokeWidth={2} />
               </ThemeIcon>
-              <Badge className={classes.badge}>0</Badge>
+              <Badge className={classes.badge}>
+                {quantity > 99 ? "99+" : quantity}
+              </Badge>
             </Link>
           </li>
         </ul>
