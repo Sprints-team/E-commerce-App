@@ -23,31 +23,10 @@ const New = ({ title, type }) => {
 			prevState[id] = colorObj;
 			return { ...prevState };
     });
-    // colors={...colors,[colors[id]]:colorObj}
-    console.log(file)
 		setFiles((prevState) => ({ ...prevState, [id]: file }));
 	}
-	console.log(colors);
 
-	// const colorInput = (e) => {
-	//   e.preventDefault();
-	//   setColorField((state) => [
-	//     ...state,
-	//     <div className='form-input' key={state.length}>
-	//       <label>color</label>
-	//       <input type='color' className='input' />
-	//       <label>qty</label>
-	//       <input type='number' className='input' />
-	//     </div>,
-	//   ]);
-	// };
 	const handleChange = (e) => {
-		console.log(e.target.required);
-		// if (e.target.required && e.target.value === null) {
-		//     setRequired(true)
-		// } else {
-		//     setRequired(false)
-		// }
 		setInputData((prevState) => {
 			return { ...prevState, [e.target.name]: e.target.value };
 		});
@@ -62,60 +41,28 @@ const New = ({ title, type }) => {
 		]);
 	};
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
-
-		// try {
-		// axios.post("/api/products", {
-		// data: inputData,
-		//header: cookies.token
-		//   })
-		// }
-		// catch (err) { console.log(err); }
-
-		// navigate(`/admin/${type}`)
-	};
+  const handleSubmit = (e) => {
+    e.preventDefault(e)
+  }
 
 	const sendHandler = (e) => {
 		e.preventDefault();
-		console.log(Object.entries(colors));
-		console.log(files);
 		let obj = {};
-		// const objArr=	Object.values(colors).map((obj) => {
-		// 		let bigObj = {};
-		// 		for (let key in obj) {
-		//       let newObj = {};
-
-		// 			for (let size in obj[key]) {
-		// 				newObj[key] = { ...newObj[key], ...obj[key][size] };
-		// 			}
-		// 			bigObj = { ...bigObj, ...newObj };
-		// 			console.log(bigObj);
-		// 		}
-		// 		return bigObj;
-		// })
-
 		const objArr2 = Object.entries(colors).map((arr) => {
 			let bigObj = {};
-			console.log(arr[1]);
 			// key is the hexdecimal color
 			for (let key in arr[1]) {
-				console.log(key);
 				let newObj = {};
 
-				console.log(arr[1][key]);
 				//size is the size
 				for (let size in arr[1][key]) {
 					newObj[key] = { ...newObj[key], ...arr[1][key][size] };
 				}
 				bigObj = { ...bigObj, ...newObj };
-				console.log(bigObj);
-				console.log({ [key]: files[arr[0]] });
 			}
 			return bigObj;
 		});
 
-		console.log(objArr2);
 		objArr2.forEach((ele) => {
 			obj = { ...obj, ...ele };
 		});

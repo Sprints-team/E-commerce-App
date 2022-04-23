@@ -8,15 +8,11 @@ const Color = (props) => {
 	const [colorObj, setColorObj] = useState({});
 	const [file, setFile] = useState();
 
-	console.log(file);
 	const updateSize = (sizeobj, id) => {
-		console.log("ahoooooo");
-		console.log(file);
 		setColorObj((prevState) => {
 			prevState[id] = sizeobj;
 			return { ...prevState };
 		});
-		console.log(file);
 		props.onChange(
 			{
 				[color]: { ...colorObj, [id]: sizeobj },
@@ -25,17 +21,37 @@ const Color = (props) => {
 			file
 		);
   };
-  props.onChange(
-    {
-      [color]: { ...colorObj },
-    },
-    props.id,
-    file
-  );
+  // props.onChange(
+  //   {
+    //     [color]: { ...colorObj },
+    //   },
+    //   props.id,
+    //   file
+    // );
+    const [sizeInputs, setSizeInputs] = useState([
+      {onChange:updateSize,id:id,onDelete:deleteSize}
+    ]);
 
-	const [sizeInputs, setSizeInputs] = useState([
-		<Size onChange={updateSize} id={id} key={id} />,
-	]);
+  function deleteSize  (id) {
+    setColorObj(prevState => {
+      delete prevState[id]
+      return {prevState}
+    })
+    console.log(id)
+    const tempColorObj = { ...colorObj }
+    delete tempColorObj.id
+    props.onChange(
+      {
+        [color]: { ...tempColorObj },
+      },
+      props.id,
+      file
+    );
+    setSizeInputs(prevState=>prevState.filter(ele=>ele.id!==id))
+  }
+
+
+
 
 	const changeHandler = (e) => {
 		setColor(e.target.value);
@@ -57,7 +73,7 @@ const Color = (props) => {
 		}));
 		setSizeInputs((prevState) => [
 			...prevState,
-			<Size onChange={updateSize} id={id} key={id} />,
+			{onChange:updateSize,id:id,onDelete:deleteSize},
 		]);
 	};
 
@@ -73,15 +89,17 @@ const Color = (props) => {
 	};
 
 	return (
-		<>
+		<div style={{border:"1px solid red"}}>
 			<label>
 				color
 				<input type={"color"} onChange={changeHandler} value={color} />
 			</label>
 			<input type={"file"} onChange={fileChangeHandler} multiple={true} />
-			{sizeInputs}
-			<button onClick={clickHandler}>add size</button>
-		</>
+      {sizeInputs.map(ele => {
+        return (<Size onChange={ele.onChange} id={ele.id} key={ele.id} onDelete={ele.onDelete} />)
+      })}
+      <button onClick={clickHandler}>add size</button>
+		</div>
 	);
 };
 

@@ -5,7 +5,6 @@ const Size = (props) => {
 	const [qty, setQty] = useState("");
 
 	const sizeChnageHandler = (e) => {
-    console.log("haaaay");
 		props.onChange(
       {
         [e.target.value]: {
@@ -18,7 +17,6 @@ const Size = (props) => {
 	};
 
 	const qtyChnageHandler = (e) => {
-    console.log("aaaaaah");
 		props.onChange(
       {
         [size]: {
@@ -28,10 +26,16 @@ const Size = (props) => {
 			props.id
       );
       setQty(e.target.value);
-	};
+  };
+  
+
+  const deleteHandler = (e) => {
+    props.onDelete(props.id)
+  }
+
 
 	return (
-		<>
+		<div style={{border:"2px solid black"}}>
 			<label>
 				size
 				<input type="text" onChange={sizeChnageHandler} value={size} />
@@ -39,8 +43,9 @@ const Size = (props) => {
 			<label>
 				quantity
 				<input type="number" onChange={qtyChnageHandler} value={qty} />
-			</label>
-		</>
+      </label>
+      <button onClick={deleteHandler}>delete size</button>
+		</div>
 	);
 };
 

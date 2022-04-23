@@ -182,6 +182,7 @@ exports.getProducts = async (req, res, next) => {
 				price: 1,
 				images: 1,
 				ageGroup: 1,
+				gender:1,
 				sku: 1,
 				rate: "$reviews.rating",
 				parentProduct: 1,
