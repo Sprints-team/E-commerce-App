@@ -7,7 +7,7 @@ const validator = (ajvValidator, params = false, query = false) => {
 				return res.status(400).json({
 					error: "400",
 					errors: errors.map((ele) => {
-						return { msg: ele.instancePath + " " + ele.message, ele };
+						return { msg: `${ele.instancePath} ${ele.message, ele}` };
 					}),
 				});
 			}
@@ -19,7 +19,7 @@ const validator = (ajvValidator, params = false, query = false) => {
 			return res.status(400).json({
 				error: "400",
 				errors: errors.map((ele) => {
-					return { msg: ele.instancePath + " " + ele.message, ele };
+					return { msg: `${ele.instancePath} ${ele.message, ele}` };
 				}),
 			});
 		}

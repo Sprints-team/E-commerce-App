@@ -2,7 +2,7 @@ const NotFound = require("../errors/not-found");
 const User = require("../model/user");
 
 exports.getUsers = async (req, res, next) => {
-	const id = (req.query.id || req.body.id)?.trim();
+	const id = (req.body.id)?.trim();
 	const status = (req.body.status)?.trim().toUpperCase();
 	const search = (req.body.search)?.trim();
 	const skip = req.body.skip;

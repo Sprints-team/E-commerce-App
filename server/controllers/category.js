@@ -29,6 +29,4 @@ exports.addCategory=async (req, res, next) => {
 };
 
 
-exports.deleteCategory = deleteHandlerCreator(Category, "category", (doc) => {
-  console.log(doc)
-})
+exports.deleteCategory = deleteHandlerCreator(Category, "category", (doc) => {})

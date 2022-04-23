@@ -61,7 +61,6 @@ exports.verifyAcount = async (req, res, next) => {
 
 		if (user.verification.verificationCode === code) {
 			user.verification.verified = true;
-			
 
 			await user.save();
 
@@ -85,15 +84,21 @@ exports.postLogin = async (req, res) => {
 
 		const validPassword = await user.checkPassword(password);
 
-		//wrong password
 		if (user.status === "SUSPENDED")
-			res.status(403).json({ error: "403", msg: "this acount is suspended" });
+		res.status(403).json({ error: "403", msg: "this acount is suspended" });
+		//wrong password
 		if (!validPassword)
-			return res
-				.status(403)
-				.json({ error: "403", msg: "user entered a wrong password" });
+		return res
+		.status(403)
+		.json({ error: "403", msg: "user entered a wrong password" });
 		if (user.status === "INACTIVE_ACOUNT")
-			res.status(403).json({ error: "403", msg: "this acount is inactivated" });
+		return res
+		.status(403)
+		.json({ error: "403", msg: "this acount is inactivated" });
+		if (!user.verification.verified)
+		return res
+				.status(403)
+				.json({ error: "403", msg: "please verify your acount" });
 		const token = jwt.sign(
 			{
 				userName: user.name,
@@ -101,7 +106,7 @@ exports.postLogin = async (req, res) => {
 				email: user.email,
 				userId: user._id,
 			},
-			secret
+			secret,{expiresIn:"2h"}
 		);
 		res.status(200).json({
 			jsonToken: token,
@@ -121,6 +126,7 @@ exports.activateAccount = async (req, res, next) => {
 
 	try {
 		const user = await User.findOne({ email: email });
+		
 		if (!user)
 			return res
 				.status(404)
@@ -128,9 +134,9 @@ exports.activateAccount = async (req, res, next) => {
 
 		const validPassword = await user.checkPassword(password);
 
-		//wrong password
 		if (user.status === "SUSPENDED")
-			res.status(403).json({ error: "403", msg: "this acount is suspended" });
+		res.status(403).json({ error: "403", msg: "this acount is suspended" });
+		
 		if (!validPassword)
 			return res
 				.status(403)

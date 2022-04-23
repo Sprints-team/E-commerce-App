@@ -7,14 +7,7 @@ const getColorImages = require("../helpers/ge-color-Images");
 const SKU = require("../model/sku");
 const NotFound = require("../errors/not-found");
 
-/* data received:
-      1-the new product data  
-      2-json web token 
-  */
 
-/* 
-  data returned json object and the id of the product in the db to add the images
-   */
 
 exports.addProduct = async (req, res, next) => {
 	const {
@@ -55,12 +48,9 @@ exports.addProduct = async (req, res, next) => {
 };
 
 //delete
-exports.deleteProduct = deleteHandlerCreator(Product, "product", (doc) => {
-	console.log(doc, "doc");
-});
+exports.deleteProduct = deleteHandlerCreator(Product, "product", (doc) => {});
 
 // get
-
 // get with skuid
 exports.getProduct = async (req, res, next) => {
 	//get all the product data

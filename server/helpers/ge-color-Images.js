@@ -7,7 +7,6 @@ const getColorImages = (images) => {
       imagesColorMap.set(element.fieldname,[element.path.replaceAll(`\\`,`/`)])
     }
   });
-  console.log(imagesColorMap)
   return Object.fromEntries(imagesColorMap)
 }
 

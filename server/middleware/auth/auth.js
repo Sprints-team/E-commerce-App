@@ -10,7 +10,6 @@ const extractjsonToken = (headers) => {
 const authorize = (headers,secret) => {
 	// extract the jwt from the request headers
 	const jsonToken =extractjsonToken(headers);
-	console.log(jsonToken);
 	//no jwt attached
 	if (!jsonToken) return null;
 

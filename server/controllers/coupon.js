@@ -22,15 +22,12 @@ exports.addCoupon =async (req, res, next) => {
 } 
 
 
-exports.deleteCopoun = deleteHandlerCreator(Copoun, "copoun", (doc) => {
-  console.log(doc)
-})
+exports.deleteCopoun = deleteHandlerCreator(Copoun, "copoun", (doc) => {})
 
 
 exports.getCopouns = async (req, res, next) => {
   try {
     const copouns = Copoun.find()
-    
     res.status(200).json(copouns)
   } catch (err) {
     next(err,req,res,next)

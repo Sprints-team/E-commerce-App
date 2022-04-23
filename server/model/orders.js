@@ -152,11 +152,7 @@ orderSchema.statics.cancelOrder = async function (id, user, msg) {
 	};
 };
 
-// doc methods
-/* 
-{sku:}}
-*/
-//{sku:{size,qty,price}}
+
 orderSchema.methods.checkInventoryAndOrder = async function () {
 	const session = await mongoose.startSession();
 	const or = [];

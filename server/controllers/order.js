@@ -111,7 +111,6 @@ exports.cancelOrder = async (req, res, next) => {
 	try {
 		const response = await Order.cancelOrder(id, user);
 
-		// if(result.modifiedCount===0) return res.status(400).json({error:"400", msg:"order is not cancelled"})
 		return res.status(response.status).json({ msg: response.msg });
 	} catch (err) {
 		next(err, req, res, next);

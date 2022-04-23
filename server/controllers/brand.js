@@ -24,6 +24,4 @@ exports.addBrand=async (req, res, next) => {
 };
 
 
-exports.deleteBrand = deleteHandlerCreator(Brand, "brand", (doc) => {
-	console.log(doc)
-});
+exports.deleteBrand = deleteHandlerCreator(Brand, "brand", (doc) => {});
