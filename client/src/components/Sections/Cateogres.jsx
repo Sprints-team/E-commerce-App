@@ -1,5 +1,4 @@
-import { Center } from "@mantine/core";
-import { Loader } from "tabler-icons-react";
+import { Center, Loader } from "@mantine/core";
 import { useGetProductsQuery } from "../../redux/productsSlice";
 import classes from "../../styles/Sections/SectionItem.module.scss";
 import ProductsList from "../Productslist/ProductsList";

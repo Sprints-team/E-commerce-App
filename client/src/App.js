@@ -1,4 +1,5 @@
-import { Route, Routes } from "react-router-dom";
+import { useEffect } from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
 import ProductPage from "./components/ProductPage/ProductPage";
 
 
@@ -23,6 +24,10 @@ import Home from "./Pages/Home";
 import Search from "./Pages/Search";
 
 function App() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return (
     <Routes>
     <Route path='/'>

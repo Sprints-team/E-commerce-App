@@ -1,5 +1,7 @@
 import { Container } from "@mantine/core";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 import classes from "../styles/Cart/Cart.module.scss";
 
 /* const cartItems = {
@@ -12,6 +14,10 @@ import classes from "../styles/Cart/Cart.module.scss";
 }; */
 const Cart = () => {
   const products = useSelector((state) => state.cart.products);
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return (
     <Container size='xl'>
       <div className={classes.container}>
