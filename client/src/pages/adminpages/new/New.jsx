@@ -5,7 +5,7 @@ import Navbar from '../../../components/adminComponents/navbar/Navbar';
 import Sidebar from '../../../components/adminComponents/sidebar/Sidebar';
 import axios from '../../../hooks/axios';
 import { useNavigate } from "react-router-dom";
-import { useEffect ,useState ,useId} from "react";
+import {useState ,useId} from "react";
 import { useCookies } from "react-cookie";
 import ImageUploading from "react-images-uploading";
 import Form from "react-bootstrap/Form"
