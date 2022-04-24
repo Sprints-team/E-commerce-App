@@ -35,7 +35,6 @@ $primaryColor: variables.$primaryColor;
 @mixin flexCenter {
   display: flex;
   justify-content: center;
-  // align-items: center;
 }
 @mixin small-container {
   border-radius: 5px;

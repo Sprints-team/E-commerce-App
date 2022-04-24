@@ -2,8 +2,6 @@ import { useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import ProductPage from "./components/ProductPage/ProductPage";
 
-
-
 import {
   orderColumns,
   orderRows,
@@ -21,6 +19,7 @@ import New from "./Pages/adminpages/new/New.jsx";
 import NewProduct from "./Pages/adminpages/new/NewProduct";
 import Single from "./Pages/adminpages/single/Single.jsx";
 import Cart from "./Pages/Cart";
+import Checkout from "./Pages/Checkout";
 import Home from "./Pages/Home";
 import Search from "./Pages/Search";
 
@@ -31,7 +30,7 @@ function App() {
   }, [pathname]);
   return (
     <Routes>
-    <Route path='/'>
+      <Route path='/'>
         <Route index element={<Home />} />
 
         <Route path='products'>
@@ -40,6 +39,8 @@ function App() {
         </Route>
 
         <Route path='cart' element={<Cart />} />
+        <Route path='checkout' element={<Checkout />} />
+
         <Route path='admin'>
           <Route index element={<Adminhome />} />
           <Route path='login' element={<Adminlogin />} />
@@ -59,7 +60,10 @@ function App() {
             />
             <Route path=':id'>
               <Route index element={<Single type='users' />} />
-              <Route path='edit' element={<Edit inputs={userInputs}  type='users'/>} />
+              <Route
+                path='edit'
+                element={<Edit inputs={userInputs} type='users' />}
+              />
             </Route>
           </Route>
           <Route path='products'>
@@ -77,7 +81,10 @@ function App() {
             />
             <Route path=':id'>
               <Route index element={<Single type='products' />} />
-              <Route path='edit' element={<Edit inputs={productInputs}   type='products' />} />
+              <Route
+                path='edit'
+                element={<Edit inputs={productInputs} type='products' />}
+              />
             </Route>
 
             <Route
@@ -98,7 +105,7 @@ function App() {
               }
             />
             <Route path=':id' element={<Single />} />
-            <Route path='edit' element={<Edit   type='orders' />} />
+            <Route path='edit' element={<Edit type='orders' />} />
           </Route>
           <Route path='category'>
             <Route
@@ -138,7 +145,10 @@ function App() {
             />
             <Route path=':id'>
               <Route index element={<Single type='brand' />} />
-              <Route path='edit' element={<Edit inputs={userInputs}  type='brand' />} />
+              <Route
+                path='edit'
+                element={<Edit inputs={userInputs} type='brand' />}
+              />
             </Route>
 
             <Route
@@ -148,7 +158,7 @@ function App() {
           </Route>
         </Route>
       </Route>
-      </Routes>
+    </Routes>
   );
 }
 
