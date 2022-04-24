@@ -5,9 +5,9 @@ $primaryColor: variables.$primaryColor;
 
 .container {
   display: flex;
-  padding: 60px 0;
+  // padding: 60px 0;
   gap: 28px;
-  min-height: calc(100vh - 100px);
+  // min-height: calc(100vh - 70px);
 
   .table {
     flex: 3;
@@ -76,7 +76,7 @@ $primaryColor: variables.$primaryColor;
       }
     }
     button {
-      @include mixins.button;
+      @include mixins.btnColored;
     }
   }
 }

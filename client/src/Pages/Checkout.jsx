@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Header from "../components/Header/Header";
 import Navbar from "../components/Header/Navbar";
 import classes from "../styles/Cart/Cart.module.scss";
-const Cart = () => {
+const Checkout = () => {
   let navigate = useNavigate();
   const products = useSelector((state) => state.cart.products);
   const { pathname } = useLocation();
@@ -76,4 +76,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default Checkout;

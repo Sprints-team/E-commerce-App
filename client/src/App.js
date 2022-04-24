@@ -17,6 +17,7 @@ import Adminlogin from "./Pages/adminpages/login/Adminlogin";
 import New from "./Pages/adminpages/new/New.jsx";
 import Single from "./Pages/adminpages/single/Single.jsx";
 import Cart from "./Pages/Cart";
+import Checkout from "./Pages/Checkout";
 import Home from "./Pages/Home";
 import Search from "./Pages/Search";
 
@@ -36,6 +37,7 @@ function App() {
         </Route>
 
         <Route path='cart' element={<Cart />} />
+        <Route path='checkout' element={<Checkout />} />
 
         <Route path='admin'>
           <Route index element={<Adminhome />} />
