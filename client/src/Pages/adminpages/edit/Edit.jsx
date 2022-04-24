@@ -3,7 +3,6 @@ import Navbar from '../../../components/adminComponents/navbar/Navbar'
 import Sidebar from '../../../components/adminComponents/sidebar/Sidebar'
 import './Edit.scss'
 import { useState } from 'react'
-import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
 
 import { useNavigate, useParams } from "react-router-dom";
 import { useCookies } from "react-cookie";
@@ -152,17 +151,17 @@ const handleSubmit = async (e) => {
 const optionsCat = [{
   name: "category",
   value: "MEN",
-  id: useId()
+  id: 1
 },
 {
   name: "category",
   value: "WOMEN",
-  id: useId()
+  id: 2
 },
 {
   name: "category",
   value: "kIDS",
-  id: useId()
+  id: 3
 }
 
 ]
@@ -172,17 +171,17 @@ const optionsCat = [{
 const optionsBrand = [{
   name: "brand",
   value: "PRADA",
-  id: useId()
+  id: 1
 },
 {
   name: "brand",
   value: "CHANEL",
-  id: useId()
+  id: 2
 },
 {
   name: "brand",
   value: "HERMES",
-  id: useId()
+  id: 3
 }
 
 ]

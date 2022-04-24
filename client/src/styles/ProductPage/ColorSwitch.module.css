@@ -1,0 +1,1 @@
+.container{display:flex;justify-content:flex-start;align-items:center;margin-top:20px;margin-bottom:20px}@media screen and (max-width: 426px){.container{justify-content:space-around}}.colorSwatch{margin-right:15px;cursor:pointer;transition:all .2s ease-in-out}.colorSwatch:hover{box-shadow:0px 0px 5px 1px rgba(0,0,0,.568627451);transform:scale(1.28)}

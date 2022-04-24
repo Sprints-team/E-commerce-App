@@ -18,6 +18,7 @@ import Edit from "./Pages/adminpages/edit/Edit.jsx";
 import List from "./Pages/adminpages/list/List.jsx";
 import Adminlogin from "./Pages/adminpages/login/Adminlogin";
 import New from "./Pages/adminpages/new/New.jsx";
+import NewProduct from "./Pages/adminpages/new/NewProduct";
 import Single from "./Pages/adminpages/single/Single.jsx";
 import Cart from "./Pages/Cart";
 import Home from "./Pages/Home";
@@ -81,7 +82,7 @@ function App() {
 
             <Route
               path='new'
-              element={<New type='products' title='Add New Product' />}
+              element={<NewProduct />}
             />
           </Route>
           <Route path='orders'>
