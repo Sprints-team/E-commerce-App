@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import ProductPage from "./components/ProductPage/ProductPage";
+
 import {
   orderColumns,
   orderRows,
@@ -56,9 +57,12 @@ function App() {
                 />
               }
             />
-            <Route path=':userId'>
+            <Route path=':id'>
               <Route index element={<Single type='users' />} />
-              <Route path='edit' element={<Edit inputs={userInputs} />} />
+              <Route
+                path='edit'
+                element={<Edit inputs={userInputs} type='users' />}
+              />
             </Route>
           </Route>
           <Route path='products'>
@@ -74,9 +78,12 @@ function App() {
                 />
               }
             />
-            <Route path=':productId'>
+            <Route path=':id'>
               <Route index element={<Single type='products' />} />
-              <Route path='edit' element={<Edit inputs={productInputs} />} />
+              <Route
+                path='edit'
+                element={<Edit inputs={productInputs} type='products' />}
+              />
             </Route>
 
             <Route
@@ -96,8 +103,8 @@ function App() {
                 />
               }
             />
-            <Route path=':orderId' element={<Single />} />
-            <Route path='edit' element={<Edit />} />
+            <Route path=':id' element={<Single />} />
+            <Route path='edit' element={<Edit type='orders' />} />
           </Route>
           <Route path='category'>
             <Route
@@ -112,9 +119,9 @@ function App() {
                 />
               }
             />
-            <Route path=':categoryId'>
+            <Route path=':id'>
               <Route index element={<Single />} />
-              <Route path='edit' element={<Edit />} />
+              <Route path='edit' element={<Edit type='category' />} />
             </Route>
 
             <Route
@@ -135,9 +142,12 @@ function App() {
                 />
               }
             />
-            <Route path=':brandId'>
+            <Route path=':id'>
               <Route index element={<Single type='brand' />} />
-              <Route path='edit' element={<Edit inputs={userInputs} />} />
+              <Route
+                path='edit'
+                element={<Edit inputs={userInputs} type='brand' />}
+              />
             </Route>
 
             <Route
