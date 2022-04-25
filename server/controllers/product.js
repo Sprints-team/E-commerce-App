@@ -182,6 +182,7 @@ exports.getProducts = async (req, res, next) => {
           {
             $project: {
               skus: 1,
+              gender: 1,
             },
           },
         ],
